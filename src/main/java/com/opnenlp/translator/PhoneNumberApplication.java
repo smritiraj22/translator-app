@@ -1,20 +1,16 @@
 package main.java.com.opnenlp.translator;
 
 import main.java.com.opnenlp.translator.util.ExcelReader;
-import main.java.com.opnenlp.translator.util.SubSequenceUtil;
 import main.java.com.opnenlp.translator.util.TwilloLookup;
 import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.Span;
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.text.WordUtils;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Map;
-import java.util.Set;
 
 public class PhoneNumberApplication {
 
@@ -53,7 +49,7 @@ public class PhoneNumberApplication {
                 }
             }
 
-            if ((translatorTable.get(d) == null || translatorTable.get(d) .equals("")) && org != null) {
+            if ((translatorTable.get(d) == null || translatorTable.get(d).equals("")) && org != null) {
                 org = TwilloLookup.phoneNumberLookup(org);
                 translatorTable.put(d, org);
             }

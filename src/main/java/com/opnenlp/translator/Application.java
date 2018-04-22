@@ -2,7 +2,6 @@ package main.java.com.opnenlp.translator;
 
 import main.java.com.opnenlp.translator.util.ExcelReader;
 import main.java.com.opnenlp.translator.util.SubSequenceUtil;
-import main.java.com.opnenlp.translator.util.TwilloLookup;
 import opennlp.tools.namefind.NameFinderME;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.tokenize.TokenizerME;
@@ -45,9 +44,14 @@ public class Application {
             Span[] nameSpans = nameFinder.find(tokens);
             double[] probs = nameFinder.probs();
 
+            for(double p:probs){
+                System.out.println(p);
+            }
+
             String org = null;
-            if (nameSpans.length >0) {
-                inner: for (Span s : nameSpans) {
+            if (nameSpans.length > 0) {
+                inner:
+                for (Span s : nameSpans) {
                     org = tokens[s.getStart()];
                     break inner;
                 }
